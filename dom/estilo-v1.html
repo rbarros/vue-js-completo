@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo v1</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .demo {
+            width: 50px;
+            height: 50px;
+            background-color: gray;
+        }
+
+        .cor-1 {
+            background-color: red;
+        }
+
+        .c2 {
+            background-color: green;
+        }
+
+        .c3 {
+            background-color: blue;
+        }
+    </style>
+    <div id="app">
+        <div class="demo" :class="{ 'cor-1': aplicarC1 }"
+            @click="aplicarC1 = !aplicarC1"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                aplicarC1: false
+            }
+        })
+    </script>
+</body>
+</html>
