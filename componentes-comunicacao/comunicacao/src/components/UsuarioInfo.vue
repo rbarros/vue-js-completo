@@ -3,15 +3,33 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do Usuário: <strong>{{ inverteNome() }}</strong></p>
+        <button @click="reiniciarNome">Reiniciar Nome</button>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['nome'],
+    props: {
+        nome: {
+            type: String,
+            // required: true,
+            // default: function () {
+            //     return Array(10).fill(0).join(',')
+            // }
+            default: 'Anônimo',
+        }
+    },
     methods: {
         inverteNome() {
             return this.nome.split('').reverse().join('')
+        },
+        reiniciarNome() {
+            const antigo = this.nome;
+            this.nome = 'Pedro'
+            this.$emit('nomeMudou', {
+                novo: this.nome,
+                antigo: antigo
+            })
         }
     }
 }
